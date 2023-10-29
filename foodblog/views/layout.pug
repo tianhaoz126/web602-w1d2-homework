@@ -1,0 +1,58 @@
+doctype html
+html(lang="en")
+  head
+    title Food Blog
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js")
+    link(rel="preconnect", href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap", rel="stylesheet")
+    style.
+      * {
+          font-family: Arial, Helvetica, sans-serif;
+      }
+      #leftside {
+          float: left;
+          width: 30%;
+          min-height: 1200px;
+          background-color: rgb(77, 192, 154);
+      }
+      ...
+      /* Continue with the rest of the CSS as it appears in the HTML */
+  body
+    aside#leftside
+    aside#rightside
+    div#container
+      header
+        span Food Blog
+      main
+        aside#photos
+          img(src="images/chili.jpg", alt="White Chicken Chili", width="180")
+        h2 Comments
+        section#blogposts
+          .post
+            span.author
+              img(v-bind:src="placeholderImg", @click="displayAuthorInfo('Brianna')", width="50", alt="Author")
+              | Brianna —
+            span.date February 18, 2021 @ 3:30 pm
+            span.reply REPLY
+            p Was amazing! My Walmart didn’t have coriander in stock...
+            // ...continue with the rest of the posts in a similar manner...
+      footer &copy; Copyright FOOD BLOG
+      div(v-if="showInfoBox", class="floating-box")
+        button(@click="closeInfoBox") Close
+        h3 {{ currentAuthor ? currentAuthor.level : '' }}
+        p {{ currentAuthor ? currentAuthor.bio : '' }}
+
+    script.
+      new Vue({
+          el: '#container',
+          data: {
+              placeholderImg: 'profile.png',
+                authors: {
+                    "Brianna": { level: "Novice", bio: "Food enthusiast. Love to cook and experiment. Into only organic, fat free, sugar free stuffs!" },
+                    "LINH": { level: "Newcomer", bio: "Love food! Grew up with meat and potatoes. Recently venture outside my comfort zone. Loving everything I have been eating so far. Thai is my favorite at this time." },
+                    "CATHERINE LEONARDO": { level: "Mentor", bio: "I have to say I never was the adventurous type until 2 years ago. My boyfriend, who is of Japanese background, exposed me to other cultural food and I have never look back since!" },
+                    "KALI": { level: "Novice", bio: "Food is my passion. So is cooking. I love to experiment and try new things. I have to admit I'm a food whore! Invite me over for dinner and I'll be there!" }
+          }
+      });
